@@ -57,8 +57,9 @@
             data: $("#comment_form").serialize()
         })
 
-        .done(function (response) {
-            debugger;
+            .done(function (response) {
+            //clear from field after submit
+            $('#comment_form')[0].reset();
 
         })
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
