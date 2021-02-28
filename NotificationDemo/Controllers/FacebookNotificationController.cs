@@ -17,6 +17,12 @@ namespace NotificationDemo.Controllers
             db = _db;
         }
 
+        public IActionResult ListOfMessage()
+        {
+            var list_notification = db.Messages.ToList();
+            return Json(list_notification);
+        }
+
         public IActionResult Index()
         {
             return View();
