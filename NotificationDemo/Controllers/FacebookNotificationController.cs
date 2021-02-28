@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NotificationDemo.Data;
+using NotificationDemo.Models;
 
 namespace NotificationDemo.Controllers
 {
@@ -21,10 +22,12 @@ namespace NotificationDemo.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Insert()
+        [HttpPost]
+        public IActionResult Insert(Message model)
         {
-            return View();
+            db.Add<Message>(model);
+            db.SaveChanges();
+            return RedirectToAction("Index", "FacebookNotification");
         }
     }
 }

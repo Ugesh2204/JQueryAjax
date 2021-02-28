@@ -31,11 +31,15 @@
             <textarea name="MessageText" id="MessageText" class="form-control" rows="5"></textarea>
         </div>
 
+        <div class="form-group">
+            <input type="button" id="SendButton" class="btn btn-info" value="Send Notification" />
+        </div>
+
     </form>
 
-    <div class="form-group">
+    @*<div class="form-group">
         <input type="button" name="createButton" id="createButton" class="btn btn-info" value="Send Notification" />
-    </div>
+    </div>*@
 
 
 
@@ -44,19 +48,43 @@
 
 <script>
 
+
+    $("#SendButton").click(function () {
+        $.ajax({
+           type: 'Post',
+            url: '/FacebookNotification/Insert',
+            //remove form data with serialize
+            data: $("#comment_form").serialize()
+        })
+
+        .done(function (response) {
+            debugger;
+
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("FAIL");
+        });
+
+       
+
+    })
+
     //$(document).ready(function () {
 
-        $("#createButton").click(function () {
-            $.ajax({
-                type: 'GET',
-                url: '/FacebookNotification/Insert'
+        //$("#createButton").click(function () {
+        //    $.ajax({
+        //        type: 'GET',
+        //        url: '/FacebookNotification/Insert'
                 
 
-            }).done(function (response) {
-                debugger;
+        //    }).done(function (response) {
+        //        debugger;
 
-            });
-        });
+        //    });
+        //});
+
+
+
 
     //})
 </script>
